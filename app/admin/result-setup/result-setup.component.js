@@ -11,10 +11,11 @@
         'resultSetupService',
         '$routeParams',
         '$location',
-        'resultSetupBuilder'
+        'resultSetupBuilder',
+        '$uibModal'
     ];
 
-    function ResultSetupController(resultSetupService, $routeParams, $location, resultSetupBuilder) {
+    function ResultSetupController(resultSetupService, $routeParams, $location, resultSetupBuilder, $uibModal) {
         let vm = this;
 
         vm.isManualInput = false;
@@ -118,12 +119,30 @@
             $location.path(ref);
         };
 
+        vm.nextRound = function(){
+            resultSetupService.closeRound(vm.round.$id, $routeParams.gameId)
+                .then(() => {
+                    $location.path(`/games/${$routeParams.gameId}/rounds`);
+                });
+        };
+
+        function showAlert() {
+            $uibModal.open({
+                animation: false,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'myModalContent.html',
+                component: 'modalComponent',
+                resolve: {
+                }
+            });
+        }
+
         vm.nextQuiz = function () {
             if (!isCaptainsInGame() && vm.round.roundType.type == 'CAPTAIN_ROUND') {
-                    vm.isCaptainsOut = true;
+                showAlert();
                 return;
             }
-
             if (vm.selectedQuiz < vm.round.numberOfQuestions) {
                 if (vm.currentQuiz == vm.selectedQuiz) {
                     vm.currentQuiz++;
@@ -131,10 +150,7 @@
                 }
                 vm.setQuiz(+vm.selectedQuiz + 1);
             } else if (vm.selectedQuiz == vm.round.numberOfQuestions) {
-                resultSetupService.closeRound(vm.round.$id, $routeParams.gameId)
-                    .then(() => {
-                        $location.path(`/games/${$routeParams.gameId}/rounds`);
-                    });
+                vm.nextRound();
             }
         };
 
