@@ -15,7 +15,8 @@
         <td>{{openGame.date | date:'d MMM y'}}</td>
         <td>{{openGame.time}}</td>
         <td>{{openGame.location}}</td>
-        <td  ng-click="$event.stopPropagation();"><a ng-href='/#!/seasons/{{openGame.season.id}}'>{{openGame.season.name}}</a> </td>
+        <td ng-click="$event.stopPropagation();"><a ng-href='/#!/seasons/{{openGame.season.id}}'>{{openGame.season.name}}</a>
+        </td>
 
         <td>
             <button class="btn btn-danger game-button"
@@ -38,19 +39,19 @@
                     ng-if="$ctrl.auth">
                 <i class="fa fa-play" aria-hidden="true"></i>
             </button>
-            <a class="registration"
-               ng-href="/#!/games/{{openGame.$id}}/registration">
+            <a class="registration" ng-href="/#!/games/{{openGame.$id}}/registration">
                 {{'REGISTER_BUTTON' | translate}}
             </a>
-            <span id="err-message" class="error text-danger"
-                  ng-if="openGame.invalid">{{openGame.error| translate}}</span>
+            <span id="err-message" class="error text-danger" ng-if="openGame.invalid">
+                {{openGame.error| translate}}
+            </span>
 
             <div ng-if="openGame.isDeleteGameRequested"
                  class="alert alert-danger alert-dismissible fade in delete-game-alert" role="alert">
                 <p>{{'DELETE_GAME_ALERT' | translate}}</p>
                 <p>
-                    <button ng-click="$ctrl.deleteGame(openGame)" type="button" class="btn btn-danger">{{'DELETE_BUTTON'
-                        | translate}}
+                    <button ng-click="$ctrl.deleteGame(openGame)" type="button" class="btn btn-danger">
+                        {{'DELETE_BUTTON' | translate}}
                     </button>
                     <button ng-click="$ctrl.cancelDeleteGameRequest(openGame)" type="button" class="btn btn-default">
                         {{'CLOSE_BUTTON' | translate}}
@@ -65,8 +66,9 @@
 
 <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-header">
-        <h3 class="modal-title" id="modal-title">{{'TEAMS_MODAL_HEADER' | translate}}: {{$ctrl.date | date:'d MMM
-            y'}}</h3>
+        <h3 class="modal-title" id="modal-title">
+            {{'TEAMS_MODAL_HEADER' | translate}}:{{$ctrl.date | date:'d MMM y'}}
+        </h3>
     </div>
     <div class="modal-body" id="modal-body">
         <span ng-if="$ctrl.items.length === 0">{{'TEAMS_MODAL_PLACEHOLDER' | translate}}</span>

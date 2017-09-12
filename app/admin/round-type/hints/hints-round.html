@@ -10,18 +10,18 @@
                            name='{{$index}}'
                            ng-model="result.score"
                            ng-value="$ctrl.weight"
-                           ng-change="result.answer = '1';$ctrl.saveResult({result:result})"
-                           ng-disabled="$ctrl.isDisabled(result.teamId)">
+                           ng-change="$ctrl.save(result)"
+                           ng-disabled="$ctrl.isDisabled(result)">
 
-                    <label  class='switcher-label switcher-off' for='{{$index+"off"}}'>off</label>
+                    <label class='switcher-label switcher-off' for='{{$index+"off"}}'>off</label>
                     <input id='{{$index+"off"}}'
                            class='switcher-radio-off'
                            type='radio'
                            name='{{$index}}'
                            ng-model="result.score"
                            ng-value="0"
-                           ng-change="result.answer = '0';$ctrl.saveResult({result:result})"
-                           ng-disabled="$ctrl.isDisabled(result.teamId)">
+                           ng-change="$ctrl.save(result)"
+                           ng-disabled="$ctrl.isDisabled(result)">
 
                     <label class='switcher-label switcher-neutral' for='{{$index+"def"}}'>neutral</label>
                     <input id='{{$index+"def"}}'
@@ -34,9 +34,7 @@
                     <div class='switcher-slider'></div>
                 </div>
                 <div class="team-name">{{result.teamName}}</div>
-            </label
->
+            </label>
         </li>
     </ul>
 </div>
-

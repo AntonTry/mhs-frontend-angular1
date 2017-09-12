@@ -66,7 +66,7 @@ function CaptainRoundTypeController($location, $routeParams, GameServiceFactory,
     };
 
     vm.closeRound = function () {
-        resultSetupService.closeRound($routeParams.roundNumber,$routeParams.gameId)
+        resultSetupService.closeRound($routeParams.roundNumber, $routeParams.gameId)
             .then(() => {
                 $location.path(`/games/${$routeParams.gameId}/rounds`);
             });
@@ -74,13 +74,13 @@ function CaptainRoundTypeController($location, $routeParams, GameServiceFactory,
 
     function getCaptainsInGameCount(results) {
         let captainsCount = 0;
-        results.forEach((result)=>{
-            if(result.score !== 0){
+        results.forEach((result) => {
+            if (result.score !== 0) {
                 captainsCount++;
             }
         });
         return captainsCount;
-    };
+    }
 
     function isFirstQuiz() {
         return $routeParams.quizNumber === '1';
