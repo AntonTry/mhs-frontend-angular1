@@ -17,8 +17,10 @@ angular
     'teamList',
     'navbar',
     'gameTemplate',
-    'season'])
-  .config(['$routeProvider', function ($routeProvider) {
+    'season',
+    'ngMeta',
+  'updateMeta'])
+  .config(['$routeProvider', 'ngMetaProvider', function ($routeProvider, ngMetaProvider) {
 
     let isAuth = {
       currentUser: ['userAuthService', function (auth) {
@@ -38,7 +40,16 @@ angular
     });
     $routeProvider.when('/games', {
       template: '<game-list></game-list>',
-      reloadOnSearch: false
+      reloadOnSearch: false,
+      data: {
+        meta: {
+          'type': 'website',
+          'title': 'SHIT',
+          'description':'SHIT',
+          'url': 'https://testproj-cd085.firebaseapp.com/#!/games',
+          'image': 'http://i2.wp.com/visitingnortheastengland.co.uk/wp-content/uploads/2015/03/the-magic-hat-vector_MkmX1gPu.jpg',
+        }
+      }
     });
     $routeProvider.when('/teams', {
       template: '<team-list></team-list>',
@@ -57,7 +68,7 @@ angular
       reloadOnSearch: false
     });
     $routeProvider.when('/games/:gameId/results', {
-      template: '<game-results-page></game-results-page>',
+      template: '<game-results-page></game-results-page>'
     });
     $routeProvider.when('/games/:gameId/results-presentation', {
       template: '<game-results></game-results>',
@@ -79,11 +90,12 @@ angular
       template: '<season></season>'
     });
   }])
-  .run(["$rootScope", "$location", 'userAuthService', function ($rootScope, $location, userAuthService) {
+  .run(["$rootScope", "$location", 'userAuthService', 'ngMeta', function ($rootScope, $location, userAuthService, ngMeta) {
     $rootScope.$on("$routeChangeError", function () {
       $location.path("/login");
     });
     userAuthService.currentUser().then((res) => {
       $rootScope.currentUser = res.email;
-    })
+    });
+    ngMeta.init();
   }]);

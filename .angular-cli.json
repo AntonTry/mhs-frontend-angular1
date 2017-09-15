@@ -58,6 +58,8 @@
         "app/bower_components/ngMask/dist/ngMask.js",
         "app/bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js",
         "app/bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js",
+        "app/bower_components/ngMeta/dist/ngMeta.min.js",
+        "app/bower_components/angular-update-meta/dist/update-meta.min.js",
         "app/shared/esc-key.js",
         "app/shared/enter-key.js",
         "app/shared/focused.js",
