@@ -18,8 +18,7 @@ angular
     'navbar',
     'gameTemplate',
     'season',
-    'ngMeta',
-  'updateMeta'])
+    'ngMeta'])
   .config(['$routeProvider', 'ngMetaProvider', function ($routeProvider, ngMetaProvider) {
 
     let isAuth = {

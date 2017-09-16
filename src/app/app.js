@@ -21,8 +21,7 @@ angular.module('mhs', [
   '720kb.socialshare',
   'roundTypeService',
   'seasonService',
-  'ngMeta',
-  'updateMeta'
+  'ngMeta'
 ])
   .config(['$locationProvider', '$routeProvider', '$animateProvider',
     function ($locationProvider, $routeProvider, $animateProvider) {
