@@ -1,1 +1,1 @@
-angular.module('gameResultsPage', ['resultService', 'gameFactory', 'escKey', 'enterKey', 'focused']);
+angular.module('gameResultsPage', ['resultService', 'gameFactory', 'escKey', 'enterKey', 'focused', 'ngMeta']);

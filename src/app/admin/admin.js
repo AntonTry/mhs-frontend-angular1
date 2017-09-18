@@ -20,6 +20,10 @@ angular
     'season',
     'ngMeta'])
   .config(['$routeProvider', 'ngMetaProvider', function ($routeProvider, ngMetaProvider) {
+    ngMetaProvider.setDefaultTag('title', 'Mad Head Show');
+    ngMetaProvider.setDefaultTag('url', 'https://gambler-cat-52452.netlify.com/#!/games');
+    ngMetaProvider.setDefaultTag('description', 'Funny game in che');
+    ngMetaProvider.setDefaultTag('image', 'https://scontent-ort2-1.cdninstagram.com/t51.2885-19/s150x150/16465720_171036253391644_7612270855699038208_a.jpg');
 
     let isAuth = {
       currentUser: ['userAuthService', function (auth) {
@@ -40,15 +44,6 @@ angular
     $routeProvider.when('/games', {
       template: '<game-list></game-list>',
       reloadOnSearch: false,
-      data: {
-        meta: {
-          'type': 'website',
-          'title': 'SHIT',
-          'description':'SHIT',
-          'url': 'https://testproj-cd085.firebaseapp.com/#!/games',
-          'image': 'http://i2.wp.com/visitingnortheastengland.co.uk/wp-content/uploads/2015/03/the-magic-hat-vector_MkmX1gPu.jpg',
-        }
-      }
     });
     $routeProvider.when('/teams', {
       template: '<team-list></team-list>',

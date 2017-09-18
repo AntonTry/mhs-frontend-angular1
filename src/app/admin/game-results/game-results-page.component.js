@@ -78,10 +78,9 @@
       $window.history.back();
     };
 
-    ngMeta.setTitle('sdsdsd', 'BEST RESULTS IN THE WORLD');
-    ngMeta.setTag('url', 'https://testproj-cd085.firebaseapp.com/#!/games/'+ gameId + '/results');
-    ngMeta.setTag('description', 'FUCKEN SHIT');
+    ngMeta.setTitle('GAME_RESULT_PAGE', 'GAME_RESULT_PAGE');
+    ngMeta.setTag('url', 'https://gambler-cat-52452.netlify.com/#!/games/'+ gameId + '/results');
+    ngMeta.setTag('description', 'GAME_RESULT_PAGE');
     ngMeta.setTag('image', 'http://i2.wp.com/visitingnortheastengland.co.uk/wp-content/uploads/2015/03/the-magic-hat-vector_MkmX1gPu.jpg');
-    ngMeta.setTag('type', 'website');
   }
 })();
