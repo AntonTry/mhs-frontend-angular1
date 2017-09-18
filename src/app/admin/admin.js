@@ -19,7 +19,7 @@ angular
     'gameTemplate',
     'season',
     'ngMeta'])
-  .config(['$routeProvider', 'ngMetaProvider', function ($routeProvider, ngMetaProvider) {
+  .config(['$routeProvider', '$locationProvider', 'ngMetaProvider', function ($routeProvider, $locationProvider, ngMetaProvider) {
     ngMetaProvider.setDefaultTag('title', 'Mad Head Show');
     ngMetaProvider.setDefaultTag('url', 'https://gambler-cat-52452.netlify.com/#!/games');
     ngMetaProvider.setDefaultTag('description', 'Funny game in che');
@@ -83,6 +83,8 @@ angular
     $routeProvider.when('/seasons/:seasonId', {
       template: '<season></season>'
     });
+
+    $locationProvider.html5Mode(true);
   }])
   .run(["$rootScope", "$location", 'userAuthService', 'ngMeta', function ($rootScope, $location, userAuthService, ngMeta) {
     $rootScope.$on("$routeChangeError", function () {
